@@ -1,15 +1,17 @@
-// alert("hello 2441139")
+
+const isLoggedIn = sessionStorage.getItem("isLogIn");
+if (!isLoggedIn) {
+  window.location.replace("index.html");
+}
+
 let issues = [];
+
 
 const allBtn = document.getElementById("allBtn");
 const openBtn = document.getElementById("openBtn");
 const closedBtn = document.getElementById("closedBtn");
-const cardContainer = document.getElementById("cardsContainer");
-const totalIssues = document.getElementById("totalIssues");
-const modal = document.getElementById("my_modal_5");
 
-// Tab switching function
-function switchTab(id) {
+function tabStyle(id) {
   allBtn.classList.remove("bg-primary", "text-white");
   openBtn.classList.remove("bg-primary", "text-white");
   closedBtn.classList.remove("bg-primary", "text-white");
@@ -21,6 +23,12 @@ function switchTab(id) {
   }
 }
 
+
+const cardContainer = document.getElementById("cardsContainer");
+const totalIssues = document.getElementById("totalIssues");
+const modal = document.getElementById("my_modal_5");
+
+
 async function loadAllIssues() {
   spinner();
   const res = await fetch(
@@ -31,7 +39,6 @@ async function loadAllIssues() {
   hideSpinner();
   displayCards(issues);
 }
-
 
 
 function displayCards(list) {
@@ -95,7 +102,7 @@ function displayCards(list) {
               </div>
         `;
 
-    // For Modal
+    
     card.addEventListener("click", () => openModal(item));
 
     cardContainer.appendChild(card);
@@ -136,3 +143,52 @@ function openModal(item) {
     item.priority.toUpperCase();
   modal.showModal();
 }
+
+
+const search = document.getElementById("searchIssue");
+const searchBtn = document.getElementById("searchBtn");
+searchBtn.addEventListener("click", () => {
+  allBtn.classList.remove("bg-primary", "text-white");
+  openBtn.classList.remove("bg-primary", "text-white");
+  closedBtn.classList.remove("bg-primary", "text-white");
+  const input = search.value.trim().toLowerCase();
+  if (!input) {
+    displayCards(issues);
+    return;
+  }
+  const searchIssues = issues.filter((i) =>
+    i.title.toLowerCase().includes(input)
+  );
+  displayCards(searchIssues);
+});
+
+search.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    searchBtn.click();
+  }
+});
+
+
+const logOut = document.getElementById("logoutBtn");
+logOut.addEventListener("click", () => {
+  window.location.replace("index.html");
+});
+
+
+allBtn.addEventListener("click", () => {
+  search.value = "";
+  displayCards(issues);
+});
+
+openBtn.addEventListener("click", () => {
+  search.value = "";
+  const openIssue = issues.filter((i) => i.status === "open");
+  displayCards(openIssue);
+});
+
+closedBtn.addEventListener("click", () => {
+  search.value = "";
+  const closeIssue = issues.filter((i) => i.status === "closed");
+  displayCards(closeIssue);
+});
+loadAllIssues();
