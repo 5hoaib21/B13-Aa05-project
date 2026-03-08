@@ -104,4 +104,17 @@ function displayCards(list) {
 }
 
 
+function spinner() {
+  const loading = document.getElementById("spinner");
+  loading.classList.remove("hidden");
+  loading.classList.add("grid");
+}
+
+function hideSpinner() {
+  const loading = document.getElementById("spinner");
+  loading.classList.remove("grid");
+  loading.classList.add("hidden");
+}
+
+
 
