@@ -72,17 +72,17 @@
       <section class="shadow-lg">
         <div class="buttons p-8 bg-base-100 rounded-xl">
           <button
-            onclick="tabStyle('allBtn')"
+            onclick="switchTab('allBtn')"
             id="allBtn"
             class="px-10  btn bg-primary text-white"
           >
             All
           </button>
-          <button onclick="tabStyle('openBtn')" id="openBtn" class="btn px-8">
+          <button onclick="switchTab('openBtn')" id="openBtn" class="btn px-8">
             Open
           </button>
           <button
-            onclick="tabStyle('closedBtn')"
+            onclick="switchTab('closedBtn')"
             id="closedBtn"
             class="btn px-8"
           >
@@ -126,7 +126,8 @@
         </div>
       </section>
       <section>
-        <!-- Open the modal using ID.showModal() method -->
+        
+        <!-- Modal popup section  -->
         <button class="btn hidden" onclick="my_modal_5.showModal()">
           open modal
         </button>
@@ -142,27 +143,27 @@
               <div>
                 <p
                   id="cardLabel1"
-                  class="badge badge-outline bg-[#FECACA] badge-secondary"
+                  class="badge badge-outline bg-[#e2b3b3] badge-secondary"
                 ></p>
                 <p
                   id="cardLabel2"
-                  class="badge badge-outline bg-[#FDE68A] text-[#D97706]"
+                  class="badge badge-outline bg-[#f3de88] text-[#e69942]"
                 ></p>
               </div>
-              <p id="cardDescription" class="text-[#64748B]">
+              <p id="cardDescription" class="text-[#6a788b]">
                 The navigation menu doesn't collapse properly on mobile devices.
                 Need to fix the responsive behavior.
               </p>
               <div class="flex gap-32">
                 <div>
-                  <p class="text-[#64748B]">Assignee:</p>
+                  <p class="text-[#6a788b]">Assignee:</p>
                   <p id="cardAuthor" class="font-semibold"></p>
                 </div>
                 <div>
-                  <p class="text-[#64748B]">Priority:</p>
+                  <p class="text-[#6a788b]">Priority:</p>
                   <p
                     id="cardPriority"
-                    class="badge bg-[#EF4444] rounded-full text-white"
+                    class="badge bg-[#ec0808] rounded-full text-white"
                   ></p>
                 </div>
               </div>
