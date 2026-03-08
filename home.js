@@ -117,4 +117,22 @@ function hideSpinner() {
 }
 
 
-
+function openModal(item) {
+  document.getElementById("cardTitle").innerText = item.title;
+  document.getElementById("cardDescription").innerText = item.description;
+  document.getElementById("cardStatus").innerText = item.status;
+  if (item.status === "open") {
+    document.getElementById("cardStatus").classList.remove("bg-purple-500");
+    document.getElementById("cardStatus").classList.add("bg-green-500");
+  } else {
+    document.getElementById("cardStatus").classList.add("bg-purple-500");
+  }
+  document.getElementById("cardAuthor").innerText = item.author;
+  document.getElementById("date").innerText = item.createdAt.split("T")[0];
+  document.getElementById("cardAuthor1").innerText = `Opened by ${item.author}`;
+  document.getElementById("cardLabel1").innerText = item.labels[0];
+  document.getElementById("cardLabel2").innerText = item.labels[1] ?? "N/A";
+  document.getElementById("cardPriority").innerText =
+    item.priority.toUpperCase();
+  modal.showModal();
+}
