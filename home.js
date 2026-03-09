@@ -1,4 +1,6 @@
 
+
+
 const isLoggedIn = sessionStorage.getItem("isLogIn");
 if (!isLoggedIn) {
   window.location.replace("index.html");
@@ -7,11 +9,11 @@ if (!isLoggedIn) {
 let issues = [];
 
 
-const allBtn = document.getElementById("allBtn");
-const openBtn = document.getElementById("openBtn");
-const closedBtn = document.getElementById("closedBtn");
+const allBtn = document.getElementById("btnAll");
+const openBtn = document.getElementById("btnOpen");
+const closedBtn = document.getElementById("btnClosed");
 
-function tabStyle(id) {
+function switchTab(id) {
   allBtn.classList.remove("bg-primary", "text-white");
   openBtn.classList.remove("bg-primary", "text-white");
   closedBtn.classList.remove("bg-primary", "text-white");
@@ -26,20 +28,20 @@ function tabStyle(id) {
 
 const cardContainer = document.getElementById("cardsContainer");
 const totalIssues = document.getElementById("totalIssues");
+
 const modal = document.getElementById("my_modal_5");
 
 
 async function loadAllIssues() {
-  spinner();
+
   const res = await fetch(
     "https://phi-lab-server.vercel.app/api/v1/lab/issues"
   );
   const data = await res.json();
   issues = data.data;
-  hideSpinner();
+ 
   displayCards(issues);
 }
-
 
 function displayCards(list) {
   cardContainer.innerHTML = "";
@@ -145,8 +147,8 @@ function openModal(item) {
 }
 
 
-const search = document.getElementById("searchIssue");
-const searchBtn = document.getElementById("searchBtn");
+const search = document.getElementById("srcIssue");
+const searchBtn = document.getElementById("btnSearch");
 searchBtn.addEventListener("click", () => {
   allBtn.classList.remove("bg-primary", "text-white");
   openBtn.classList.remove("bg-primary", "text-white");
@@ -169,7 +171,7 @@ search.addEventListener("keydown", (e) => {
 });
 
 
-const logOut = document.getElementById("logoutBtn");
+const logOut = document.getElementById("btnLogout");
 logOut.addEventListener("click", () => {
   window.location.replace("index.html");
 });

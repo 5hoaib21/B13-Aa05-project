@@ -3,11 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GitHub Issue Tracker | Home</title>
+    <title>Home</title>
     <link rel="stylesheet" href="style.css" />
-    
+    <link
+      rel="shortcut icon"
+      href="./assets/github-feb-logo.png"
+      type="image/x-icon"
+    />
 
-    <!-- Google Font & FontAwesome CDN -->
+    <!-- G-Font & FontAwesome CDn-->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -22,7 +26,7 @@
       rel="stylesheet"
     />
 
-    <!-- Tailwind & Daisy UI -->
+    <!-- DaisyUI && Tailwind  -->
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@5"
       rel="stylesheet"
@@ -30,10 +34,9 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body class="bg-base-300">
-    <!-- navbar  -->
+  <body class="bg-base-200">
     <header>
-      <nav class="bg-white shadow-lg">
+      <nav class="bg-base-100 shadow-sm">
         <div class="navbar w-11/12 mx-auto">
           <div class="flex-1">
             <a href="./home.html" class="btn btn-ghost text-xl"
@@ -46,17 +49,17 @@
           </div>
           <div class="flex gap-2">
             <input
-              id="searchIssue"
+              id="srcIssue"
               type="text"
               placeholder="🔍 Search Issues..."
               class="input input-bordered w-24 md:w-auto"
             />
             <div>
-              <button id="searchBtn" class="btn btn-primary text-white">Search</button>
-              <button id="logoutBtn" class="btn btn-primary">
+              <button id="btnSearch" class="btn btn-primary">Search</button>
+              <button id="btnLogout" class="btn btn-primary">
                 <i
-                  class="fa-solid fa-arrow-right-from-bracket 
-                  style="color: rgb(255, 255, 255)"
+                  class="fa-solid fa-arrow-right-from-bracket"
+                  style="color: rgb(116, 192, 252)"
                 ></i>
                 LogOut
               </button>
@@ -66,24 +69,23 @@
       </nav>
     </header>
 
-    <!--Home page main section  -->
-         <main id="mainSection" class="mt-14 w-11/12 mx-auto">
-      <!-- filtering tab section -->
-      <section class="shadow-lg">
-        <div class="buttons p-8 bg-base-100 rounded-xl">
+    <main id="mainSection" class="mt-14 w-11/12 mx-auto">
+      <!-- Filtered BUttons Section -->
+      <section class="shadow-sm">
+        <div class="buttons p-6 bg-base-100 rounded-md">
           <button
-            onclick="switchTab('allBtn')"
-            id="allBtn"
-            class="px-10  btn bg-primary text-white"
+            onclick="switchTab('btnAll')"
+            id="btnAll"
+            class="btn px-8 bg-primary text-white"
           >
             All
           </button>
-          <button onclick="switchTab('openBtn')" id="openBtn" class="btn px-8">
+          <button onclick="switchTab('btnOpen')" id="btnOpen" class="btn px-8">
             Open
           </button>
           <button
-            onclick="switchTab('closedBtn')"
-            id="closedBtn"
+            onclick="switchTab('btnClosed')"
+            id="btnClosed"
             class="btn px-8"
           >
             Closed
@@ -91,43 +93,43 @@
         </div>
       </section>
 
-      <!-- total issue Tracker && info section -->
+      <!-- GitHub Total Issue Section -->
       <section class="shadow-sm">
         <div
-          class="flex p-5 bg-base-100 rounded-xl mt-5 items-center justify-between"
+          class="flex p-6 bg-base-100 rounded-md mt-4 items-center justify-between"
         >
-          <div class="flex gap-5 items-center">
-            <div class="border-blue-100 rounded-full border-8">
+          <div class="flex gap-3 items-center">
+            <div class="border-blue-200 rounded-full border-8">
               <img src="./assets/Aperture.png" alt="" />
             </div>
             <div>
-              <h2 class="text-3xl font-semibold">
+              <h2 class="text-2xl font-semibold">
                 <span id="totalIssues">0</span> Issues
               </h2>
               <p>Track and manage your project issues</p>
             </div>
           </div>
-          <div class="flex gap-3">
+          <div class="flex gap-7">
             <p>🟢 Open</p>
             <p>🟣 Closed</p>
           </div>
         </div>
       </section>
-    
 
-      <!-- All Issue Card Section -->
+      
       <section
         id="cardsContainer"
-        class="p-6 bg-base-100 mt-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+        class="p-6 bg-base-100 mt-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"
       >
-        <!-- Loading spinner -->
+        
         <div id="spinner" class="hidden justify-center items-center col-span-3">
           <span class="loading loading-dots loading-xl"></span>
         </div>
       </section>
+
+      
       <section>
         
-        <!-- Modal popup section  -->
         <button class="btn hidden" onclick="my_modal_5.showModal()">
           open modal
         </button>
@@ -143,44 +145,41 @@
               <div>
                 <p
                   id="cardLabel1"
-                  class="badge badge-outline bg-[#e2b3b3] badge-secondary"
+                  class="badge badge-outline bg-[#e1acacab] badge-secondary"
                 ></p>
                 <p
                   id="cardLabel2"
-                  class="badge badge-outline bg-[#f3de88] text-[#e69942]"
+                  class="badge badge-outline bg-[#ddd3ac] text-[#D97706]"
                 ></p>
               </div>
-              <p id="cardDescription" class="text-[#6a788b]">
+              <p id="cardDescription" class="text-[#8b9db6]">
                 The navigation menu doesn't collapse properly on mobile devices.
                 Need to fix the responsive behavior.
               </p>
               <div class="flex gap-32">
                 <div>
-                  <p class="text-[#6a788b]">Assignee:</p>
+                  <p class="text-[#8b9db6]">Assignee:</p>
                   <p id="cardAuthor" class="font-semibold"></p>
                 </div>
                 <div>
-                  <p class="text-[#6a788b]">Priority:</p>
+                  <p class="text-[#8b9db6]">Priority:</p>
                   <p
                     id="cardPriority"
-                    class="badge bg-[#ec0808] rounded-full text-white"
+                    class="badge bg-[#ce4a4a] rounded-full text-white"
                   ></p>
                 </div>
               </div>
             </div>
             <div class="modal-action">
               <form method="dialog">
-                <!-- if there is a button in form, it will close the modal -->
+                
                 <button class="btn bg-primary text-white">Close</button>
               </form>
             </div>
           </div>
         </dialog>
       </section>
-     
     </main>
-
-    
 
     <script src="./home.js"></script>
   </body>
